@@ -1,0 +1,22 @@
+services:
+    redarbor.sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=r3d4rb0r2026*
+        ports:
+            - "1433:1433"
+        volumes:
+            - db_sql_data:/var/opt/mssql  
+
+    redarbor.api:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ConnectionStrings__DefaultConnection=Server=redarbor.sqlserver;Database=RedarborDb;User Id=sa;Password=r3d4rb0r2026*;TrustServerCertificate=True;
+        depends_on:
+            - redarbor.sqlserver
+        ports:
+            - "5000:8080"
+
+volumes:
+    db_sql_data:

@@ -1,0 +1,6 @@
+services:
+  redarbor.api:
+    image: ${DOCKER_REGISTRY-}redarborapi
+    build:
+      context: .
+      dockerfile: Redarbor/Dockerfile
