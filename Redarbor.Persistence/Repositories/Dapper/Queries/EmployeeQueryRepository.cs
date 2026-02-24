@@ -3,7 +3,7 @@ using Redarbor.Application.Core.Abstractions.Database;
 using Redarbor.Application.Core.Abstractions.Interfaces;
 using Redarbor.Application.Features.Employees.Dtos;
 
-namespace Redarbor.Infrastructure.Persistence.Queries;
+namespace Redarbor.Persistence.Repositories.Dapper.Queries;
 
 public class EmployeeQueryRepository(
         ISqlConnectionFactory connectionFactory

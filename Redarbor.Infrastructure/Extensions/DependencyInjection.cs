@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Redarbor.Application.Core.Abstractions.Database;
-using Redarbor.Application.Core.Abstractions.Interfaces;
 using Redarbor.Application.Core.Abstractions.Services;
-using Redarbor.Infrastructure.Persistence.Connection;
-using Redarbor.Infrastructure.Persistence.Queries;
 using Redarbor.Infrastructure.Services;
 using Redarbor.Infrastructure.Services.Auth;
 using Redarbor.Infrastructure.Services.Auth.Settings;
@@ -28,15 +24,6 @@ public static class DependencyInjection
             .BindConfiguration(nameof(JwtSettings))
             .ValidateDataAnnotations()
             .ValidateOnStart();
-
-        services
-            .AddScoped<ISqlConnectionFactory, SqlConnectionFactory>()
-            .AddScoped<IEmployeeQueryRepository, EmployeeQueryRepository>()
-            .AddScoped<IUserQueryRepository, UserQueryRepository>()
-            .AddScoped<IRoleQueryRepository, RoleQueryRepository>()
-            .AddScoped<ICompanyQueryRepository, CompanyQueryRepository>()
-            .AddScoped<IPortalQueryRepository, PortalQueryRepository>()
-            .AddScoped<IStateQueryRepository, StateQueryRepository>();
 
         return services;
     }

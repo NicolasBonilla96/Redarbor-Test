@@ -2,8 +2,8 @@
 using Redarbor.Domain.Interfaces;
 using Redarbor.Persistence.Contexts;
 
-namespace Redarbor.Persistence.Repositories;
+namespace Redarbor.Persistence.Repositories.EF;
 
-public sealed class StateRepository(
+public sealed class PortalRepository(
         RedarborDbContext db
-    ) : Repository<State, int>(db), IStateRepository;
+    ) : Repository<Portal, int>(db), IPortalRepository;

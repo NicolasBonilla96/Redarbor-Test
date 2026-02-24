@@ -3,7 +3,7 @@ using Redarbor.Domain.Entities.Auth;
 using Redarbor.Domain.Interfaces;
 using Redarbor.Persistence.Contexts;
 
-namespace Redarbor.Persistence.Repositories;
+namespace Redarbor.Persistence.Repositories.EF;
 
 public sealed class UserRepository(
         RedarborDbContext db

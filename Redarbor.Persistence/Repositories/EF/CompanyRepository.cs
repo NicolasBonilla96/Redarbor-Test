@@ -2,7 +2,7 @@
 using Redarbor.Domain.Interfaces;
 using Redarbor.Persistence.Contexts;
 
-namespace Redarbor.Persistence.Repositories;
+namespace Redarbor.Persistence.Repositories.EF;
 
 public sealed class CompanyRepository(
         RedarborDbContext db

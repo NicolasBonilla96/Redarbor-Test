@@ -1,17 +1,17 @@
 ﻿using Dapper;
 using Redarbor.Application.Core.Abstractions.Database;
 using Redarbor.Application.Core.Abstractions.Interfaces;
-using Redarbor.Application.Features.Roles.Dtos;
+using Redarbor.Application.Features.Master.Dtos;
 
-namespace Redarbor.Infrastructure.Persistence.Queries;
+namespace Redarbor.Persistence.Repositories.Dapper.Queries;
 
-public class RoleQueryRepository(
+public class StateQueryRepository(
         ISqlConnectionFactory connectionFactory
-    ) : IRoleQueryRepository
+    ) : IStateQueryRepository
 {
     private readonly ISqlConnectionFactory _connectionFactory = connectionFactory;
 
-    public async Task<RoleDto?> FindByIdAsync(Guid id)
+    public async Task<MasterDto?> FindByIdAsync(int id)
     {
         var _connection = _connectionFactory.CreateConnection();
 
@@ -19,15 +19,14 @@ public class RoleQueryRepository(
             select
                 [Id]
                 , [Name]
-                , [Description]
-            from [auth].[Roles]
+            from [type].[States]
             where [Id] = @Id
             """;
 
-        return await _connection.QueryFirstOrDefaultAsync<RoleDto>(_query, new { Id = id });
+        return await _connection.QueryFirstOrDefaultAsync<MasterDto>(_query, new { Id = id });
     }
 
-    public async Task<IEnumerable<RoleDto>> GetAllAsync()
+    public async Task<IEnumerable<MasterDto>> GetAllAsync()
     {
         var _connection = _connectionFactory.CreateConnection();
 
@@ -35,11 +34,9 @@ public class RoleQueryRepository(
             select
                 [Id]
                 , [Name]
-                , [Description]
-            from [auth].[Roles]
-            order by [Name]
+            from [type].[States]
             """;
 
-        return await _connection.QueryAsync<RoleDto>(_query);
+        return await _connection.QueryAsync<MasterDto>(_query);
     }
 }

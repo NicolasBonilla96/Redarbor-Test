@@ -3,11 +3,11 @@ using Redarbor.Application.Core.Abstractions.Database;
 using Redarbor.Application.Core.Abstractions.Interfaces;
 using Redarbor.Application.Features.Master.Dtos;
 
-namespace Redarbor.Infrastructure.Persistence.Queries;
+namespace Redarbor.Persistence.Repositories.Dapper.Queries;
 
-public class PortalQueryRepository(
+public class CompanyQueryRepository(
         ISqlConnectionFactory connectionFactory
-    ) : IPortalQueryRepository
+    ) : ICompanyQueryRepository
 {
     private readonly ISqlConnectionFactory _connectionFactory = connectionFactory;
 
@@ -19,7 +19,7 @@ public class PortalQueryRepository(
             select
                 [Id]
                 , [Name]
-            from [type].[Portals]
+            from [type].[Companies]
             where [Id] = @Id
             """;
 
@@ -34,7 +34,7 @@ public class PortalQueryRepository(
             select
                 [Id]
                 , [Name]
-            from [type].[Portals]
+            from [type].[Companies]
             """;
 
         return await _connection.QueryAsync<MasterDto>(_query);

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Redarbor.Persistence.Contexts;
 using System.Linq.Expressions;
 
-namespace Redarbor.Persistence.Repositories;
+namespace Redarbor.Persistence.Repositories.EF;
 
 public class Repository<TEntity, TKey>(
         RedarborDbContext db
@@ -38,7 +38,7 @@ public class Repository<TEntity, TKey>(
     public virtual async Task<TEntity?> FindByKeyAsync(TKey id, CancellationToken cancellationToken = default)
         => await _db.Set<TEntity>().FindAsync(id, cancellationToken);
 
-    public async Task<TEntity?> FindByintkeyAsync(Int32 id, CancellationToken cancellationToken = default)
+    public async Task<TEntity?> FindByintkeyAsync(int id, CancellationToken cancellationToken = default)
         => await _db.Set<TEntity>().FindAsync(id, cancellationToken);
 
     public async Task<TEntity?> FindBySpecAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)

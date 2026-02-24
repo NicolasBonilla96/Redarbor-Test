@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Redarbor.Application.Core.Abstractions.Database;
 using System.Data;
 
-namespace Redarbor.Infrastructure.Persistence.Connection;
+namespace Redarbor.Persistence.Repositories.Dapper.Connection;
 
 public class SqlConnectionFactory(
         IConfiguration configuration
